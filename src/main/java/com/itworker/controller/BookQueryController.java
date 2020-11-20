@@ -52,6 +52,16 @@ public class BookQueryController {
         return bookService.findAllUserBook(user,Integer.parseInt(page));
     }
 
+    /**
+     * TODO:插入一本书
+     */
+    @RequestMapping(value = "/addBook", method = RequestMethod.GET)
+    public @ResponseBody List<BookBean> addBook(HttpServletRequest httpServletRequest) {
+        String user = httpServletRequest.getParameter("user");
+        String page = httpServletRequest.getParameter("page");
+        return bookService.findAllUserBook(user,Integer.parseInt(page));
+    }
+
 
 
 }
