@@ -11,7 +11,18 @@ import java.util.List;
  */
 public interface BookService {
 
+    //查询
     public List<BookBean> findByIsbn(String isbn, int page);
     public List<BookBean> findByName(String bookName, int page);
     public List<BookBean> findAllUserBook(String user, int page);
+    public List<BookBean> findAllUserLikeBook(String user, int page);
+
+    //插入
+    public void addBook(BookBean bookBean);
+
+    /**
+     * 插入我的收藏
+     */
+    public void addMyLike(int b_id,String user);
+
 }

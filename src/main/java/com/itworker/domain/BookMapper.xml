@@ -16,8 +16,33 @@
     <select id="findAllUserBook" parameterType="java.util.Map" resultType="com.itworker.domain.BookBean">
         select * from book where user = #{user} limit #{page},#{pageSize};
     </select>
+    <!--  查询用户所有喜欢的的书籍 -->
+    <select id="findAllUserLikeBook" parameterType="java.util.Map" resultType="com.itworker.domain.BookBean">
+        select book.b_id,book_name,author,publisher,publish_year,photo_url_1,photo_url_2,photo_url_3,price,original_price,classification,status,quantity,college,isbn,book.user
+        from book,my_like
+        where book.b_id = my_like.b_id and my_like.user=#{user} limit #{page},#{pageSize};
+    </select>
 
-<!--    <select id="findByPage" parameterType="java.util.Map" resultType="com.itworker.domain.BookBean">-->
+    <insert id="addBook" parameterType="java.util.Map">
+        insert into book
+         (book_name,author,publisher,publish_year,photo_url_1,photo_url_2,
+            photo_url_3,price,original_price,classification,status,quantity,college,isbn,user)
+         values(
+         #{book_name},#{author},#{publisher},#{publish_year},#{photo_url_1},#{photo_url_2},
+            #{photo_url_3},#{price},#{original_price},#{classification},#{status},#{quantity},#{college},#{isbn},#{user}
+            )
+    </insert>
+
+
+    <insert id="addMyLike" parameterType="java.util.Map">
+        insert into my_like
+         (b_id,user)
+         values
+         (#{b_id},#{user})
+    </insert>
+
+
+    <!--    <select id="findByPage" parameterType="java.util.Map" resultType="com.itworker.domain.BookBean">-->
 <!--        select * from book-->
 <!--        where-->
 <!--        <if test="bookName != null and bookName != ''">-->

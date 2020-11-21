@@ -21,4 +21,7 @@ public interface BookDao {
     public List<BookBean> findByIsbn(Map<String,Object> param);
     public List<BookBean> findByName(Map<String,Object> param);
     public List<BookBean> findAllUserBook(Map<String,Object> param);
+    public List<BookBean> findAllUserLikeBook(Map<String,Object> param);
+    public void addBook(Map<String,Object> param);
+    public void addMyLike(Map<String,Object> param);
 }
