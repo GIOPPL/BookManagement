@@ -1,6 +1,9 @@
 package com.itworker.controller;
 
 import com.itworker.domain.BookBean;
+import com.itworker.domain.CollegeBean;
+import com.itworker.domain.SchoolAreaBean;
+import com.itworker.domain.UserBean;
 import com.itworker.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,6 +69,24 @@ public class BookQueryController {
         return bookService.findAllUserLikeBook(user, Integer.parseInt(page));
     }
 
+    /**
+     * TODO:查询学院信息
+     */
+    @RequestMapping(value = "/findCollege", method = RequestMethod.GET)
+    public @ResponseBody
+    List<CollegeBean> findCollege(HttpServletRequest httpServletRequest) {
+        return bookService.findCollege();
+    }
+    /**
+     * TODO:查询校区信息
+     */
+    @RequestMapping(value = "/findSchoolArea", method = RequestMethod.GET)
+    public @ResponseBody
+    List<SchoolAreaBean> findSchoolArea(HttpServletRequest httpServletRequest) {
+        return bookService.findSchoolArea();
+    }
+
+
 
     /**
      * TODO:插入一本书
@@ -120,7 +141,7 @@ public class BookQueryController {
         String quantityString = httpServletRequest.getParameter("quantity");
         int quantity;
         if (quantityString.isEmpty()){
-            quantity=0;
+            quantity=1;
         }else {
             quantity = Integer.parseInt(quantityString);
         }
@@ -156,5 +177,33 @@ public class BookQueryController {
         String user = httpServletRequest.getParameter("user");
         bookService.addMyLike(Integer.parseInt(b_id),user);
         return "插入成功";
+    }
+    /**
+     * TODO:插入一个用户
+     */
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    public @ResponseBody
+    String addUser(HttpServletRequest httpServletRequest) {
+        String username = httpServletRequest.getParameter("username");
+        String phone_number = httpServletRequest.getParameter("phone_number");
+        String school_area = httpServletRequest.getParameter("school_area");
+        String verify_code = httpServletRequest.getParameter("verify_code");
+        String gradeString = httpServletRequest.getParameter("grade");
+        int grade;
+        if (gradeString.isEmpty()){
+            grade=1;
+        }else {
+            grade= Integer.parseInt(gradeString);
+        }
+        String collegeString = httpServletRequest.getParameter("college");
+        int college;
+        if (collegeString.isEmpty()){
+            college=1;
+        }else {
+            college= Integer.parseInt(collegeString);
+        }
+        UserBean userBean=new UserBean(username,phone_number,school_area,verify_code,grade,college);
+        bookService.addUser(userBean);
+        return "添加用户成功";
     }
 }

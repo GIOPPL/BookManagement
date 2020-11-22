@@ -22,7 +22,14 @@
         from book,my_like
         where book.b_id = my_like.b_id and my_like.user=#{user} limit #{page},#{pageSize};
     </select>
-
+    <!--  查询学院信息 -->
+    <select id="findCollege"  resultType="com.itworker.domain.CollegeBean">
+        select * from college ;
+    </select>
+    <!--  查询校区信息 -->
+    <select id="findSchoolArea"  resultType="com.itworker.domain.SchoolAreaBean">
+        select * from school_area ;
+    </select>
     <insert id="addBook" parameterType="java.util.Map">
         insert into book
          (book_name,author,publisher,publish_year,photo_url_1,photo_url_2,
@@ -39,6 +46,13 @@
          (b_id,user)
          values
          (#{b_id},#{user})
+    </insert>
+
+    <insert id="addUser" parameterType="java.util.Map">
+        insert into user
+         (username,phone_number,school_area,verify_code,grade,college)
+         values
+         (#{username},#{phone_number},#{school_area},#{verify_code},#{grade},#{college})
     </insert>
 
 

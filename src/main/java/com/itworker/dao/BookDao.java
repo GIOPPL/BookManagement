@@ -2,6 +2,8 @@ package com.itworker.dao;
 
 import com.itworker.Constants;
 import com.itworker.domain.BookBean;
+import com.itworker.domain.CollegeBean;
+import com.itworker.domain.SchoolAreaBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -22,6 +24,9 @@ public interface BookDao {
     public List<BookBean> findByName(Map<String,Object> param);
     public List<BookBean> findAllUserBook(Map<String,Object> param);
     public List<BookBean> findAllUserLikeBook(Map<String,Object> param);
+    public List<CollegeBean> findCollege();
+    public List<SchoolAreaBean> findSchoolArea();
     public void addBook(Map<String,Object> param);
     public void addMyLike(Map<String,Object> param);
+    public void addUser(Map<String,Object> param);
 }

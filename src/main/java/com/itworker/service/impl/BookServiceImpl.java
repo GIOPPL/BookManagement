@@ -3,6 +3,9 @@ package com.itworker.service.impl;
 import com.itworker.Constants;
 import com.itworker.dao.BookDao;
 import com.itworker.domain.BookBean;
+import com.itworker.domain.CollegeBean;
+import com.itworker.domain.SchoolAreaBean;
+import com.itworker.domain.UserBean;
 import com.itworker.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +64,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<CollegeBean> findCollege() {
+        return bookDao.findCollege();
+    }
+
+    @Override
+    public List<SchoolAreaBean> findSchoolArea() {
+        return bookDao.findSchoolArea();
+    }
+
+    @Override
     public void addBook(BookBean bookBean) {
         Map<String,Object> param=new HashMap();
         param.put("book_name",bookBean.getBook_name());
@@ -89,5 +102,17 @@ public class BookServiceImpl implements BookService {
         param.put("b_id",b_id);
         param.put("user",user);
         bookDao.addMyLike(param);
+    }
+
+    @Override
+    public void addUser(UserBean userBean) {
+        Map<String,Object> param=new HashMap();
+        param.put("username",userBean.getUsername());
+        param.put("phone_number",userBean.getPhone_number());
+        param.put("school_area",userBean.getSchool_area());
+        param.put("verify_code",userBean.getVerify_code());
+        param.put("grade",userBean.getGrade());
+        param.put("college",userBean.getCollege());
+        bookDao.addUser(param);
     }
 }
