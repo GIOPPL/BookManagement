@@ -40,7 +40,7 @@ public class FileUploadController {
         filename = uuid + "_" + filename;
         upload.transferTo(new File(path,filename));
 
-        return "http://localhost:8080/images/"+filename;
+        return "http://140.143.226.166/images/"+filename;
     }
     /**
      * 文件上传SpringMVC方式

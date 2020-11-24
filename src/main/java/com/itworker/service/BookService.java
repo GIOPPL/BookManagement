@@ -21,6 +21,7 @@ public interface BookService {
     public List<BookBean> findAllUserLikeBook(String user, int page);
     public List<CollegeBean> findCollege();
     public List<SchoolAreaBean> findSchoolArea();
+    public List<UserBean> findUserMessage(String phone);
 
     //插入
     public void addBook(BookBean bookBean);

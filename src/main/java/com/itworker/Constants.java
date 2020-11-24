@@ -14,7 +14,7 @@ public class Constants {
     /**
      * 分页查询时每页数目
      */
-    public static int PAGE_SIZE = 5;
+    public static int PAGE_SIZE = 500;
 
 
     public static class TableBook {

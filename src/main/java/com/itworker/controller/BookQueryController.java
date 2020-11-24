@@ -85,6 +85,15 @@ public class BookQueryController {
     List<SchoolAreaBean> findSchoolArea(HttpServletRequest httpServletRequest) {
         return bookService.findSchoolArea();
     }
+    /**
+     * TODO:查询个人信息
+     */
+    @RequestMapping(value = "/findUserMessage", method = RequestMethod.GET)
+    public @ResponseBody
+    List<UserBean> findUserMessage(HttpServletRequest httpServletRequest) {
+        String phone = httpServletRequest.getParameter("phone");
+        return bookService.findUserMessage(phone);
+    }
 
 
 
@@ -120,21 +129,21 @@ public class BookQueryController {
         String classificationString = httpServletRequest.getParameter("classification");
         int classification;
         if (classificationString.isEmpty()){
-            classification=0;
+            classification=1;
         }else {
             classification = Integer.parseInt(classificationString);
         }
         String collegeString = httpServletRequest.getParameter("college");
         int college;
         if (collegeString.isEmpty()){
-            college=0;
+            college=1;
         }else {
             college = Integer.parseInt(collegeString);
         }
         String statusString = httpServletRequest.getParameter("status");
         int status;
         if (statusString.isEmpty()){
-            status=0;
+            status=1;
         }else {
             status = Integer.parseInt(statusString);
         }
@@ -148,14 +157,14 @@ public class BookQueryController {
         String gradeString = httpServletRequest.getParameter("grade");
         int grade;
         if (gradeString.isEmpty()){
-            grade=0;
+            grade=1;
         }else {
             grade = Integer.parseInt(gradeString);
         }
         String schoolAreaString = httpServletRequest.getParameter("school_area");
         int school_area;
         if (schoolAreaString.isEmpty()){
-            school_area=0;
+            school_area=1;
         }else {
             school_area = Integer.parseInt(schoolAreaString);
         }

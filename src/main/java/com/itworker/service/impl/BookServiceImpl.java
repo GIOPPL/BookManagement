@@ -74,6 +74,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<UserBean> findUserMessage(String phone) {
+        Map<String,Object> param=new HashMap();
+        param.put("phone", phone);
+        return bookDao.findUserMessage(param);
+    }
+
+    @Override
     public void addBook(BookBean bookBean) {
         Map<String,Object> param=new HashMap();
         param.put("book_name",bookBean.getBook_name());
