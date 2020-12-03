@@ -6,6 +6,10 @@
     <select id="findByName" parameterType="java.util.Map" resultType="com.itworker.domain.BookBean">
         select * from book where book_name like #{bookName} limit #{page},#{pageSize};
     </select>
+    <!--  查询所有图书名  -->
+    <select id="findAllBook" parameterType="java.util.Map" resultType="com.itworker.domain.BookBean">
+        select * from book where book_name limit #{page},#{pageSize};
+    </select>
 
     <!--  查询图书通过ISBN #{isbn} -->
     <select id="findByIsbn" parameterType="java.util.Map" resultType="com.itworker.domain.BookBean">

@@ -36,6 +36,15 @@ public class BookQueryController {
         String page = httpServletRequest.getParameter("page");
         return bookService.findByName(bookName, Integer.parseInt(page));
     }
+    /**
+     * TODO:通过书名模糊查询
+     */
+    @RequestMapping(value = "/findAllBook", method = RequestMethod.GET)
+    public @ResponseBody
+    List<BookBean> findAllBook(HttpServletRequest httpServletRequest) {
+        String page = httpServletRequest.getParameter("page");
+        return bookService.findAllBook(Integer.parseInt(page));
+    }
 
     /**
      * TODO:通过Isbn查询
@@ -94,6 +103,7 @@ public class BookQueryController {
         String phone = httpServletRequest.getParameter("phone");
         return bookService.findUserMessage(phone);
     }
+
 
 
 
@@ -172,7 +182,7 @@ public class BookQueryController {
                 photo_url_3,price,original_price,classification,college,isbn,user,status,quantity,grade,school_area);
         System.out.println(bookBean.toString());
         bookService.addBook(bookBean);
-        return "插入成功";
+        return "success";
     }
 
 
@@ -185,7 +195,7 @@ public class BookQueryController {
         String b_id = httpServletRequest.getParameter("b_id");
         String user = httpServletRequest.getParameter("user");
         bookService.addMyLike(Integer.parseInt(b_id),user);
-        return "插入成功";
+        return "success";
     }
     /**
      * TODO:插入一个用户
@@ -213,6 +223,6 @@ public class BookQueryController {
         }
         UserBean userBean=new UserBean(username,phone_number,school_area,verify_code,grade,college);
         bookService.addUser(userBean);
-        return "添加用户成功";
+        return "success";
     }
 }

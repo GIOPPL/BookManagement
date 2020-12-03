@@ -17,6 +17,7 @@ public interface BookService {
     //查询
     public List<BookBean> findByIsbn(String isbn, int page);
     public List<BookBean> findByName(String bookName, int page);
+    public List<BookBean> findAllBook(int page);
     public List<BookBean> findAllUserBook(String user, int page);
     public List<BookBean> findAllUserLikeBook(String user, int page);
     public List<CollegeBean> findCollege();

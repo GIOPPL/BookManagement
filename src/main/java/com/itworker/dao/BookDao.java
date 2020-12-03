@@ -23,6 +23,7 @@ import java.util.Map;
 public interface BookDao {
     public List<BookBean> findByIsbn(Map<String,Object> param);
     public List<BookBean> findByName(Map<String,Object> param);
+    public List<BookBean> findAllBook(Map<String,Object> param);
     public List<BookBean> findAllUserBook(Map<String,Object> param);
     public List<BookBean> findAllUserLikeBook(Map<String,Object> param);
     public List<CollegeBean> findCollege();

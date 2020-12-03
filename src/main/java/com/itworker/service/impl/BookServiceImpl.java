@@ -46,6 +46,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<BookBean> findAllBook(int page) {
+        Map<String,Object> param=new HashMap();
+        param.put("page", (page-1)* Constants.PAGE_SIZE);
+        param.put("pageSize",Constants.PAGE_SIZE);
+        return bookDao.findAllBook(param);
+    }
+
+    @Override
     public List<BookBean> findAllUserBook(String user, int page) {
         Map<String,Object> param=new HashMap();
         param.put("page", (page-1)* Constants.PAGE_SIZE);
